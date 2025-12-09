@@ -1,5 +1,4 @@
 # src/api/routes/auth.py
-
 from datetime import datetime
 from fastapi import APIRouter, Depends, HTTPException, status
 from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
@@ -45,7 +44,7 @@ def login(payload: LoginPayload):
         }
     )
 
-    logger.info(f"Login bem-sucedido para usuário {user.username}")
+    logger.info(f"Login bem-sucedido para usuário '{user.username}'")
 
     return {
         "access_token": access_token,
@@ -60,7 +59,6 @@ def get_current_user(
     """
     Extrai o usuário atual a partir do token Bearer.
     """
-    # se não vier header Authorization, o HTTPBearer já levanta "Not authenticated"
     token = credentials.credentials
 
     try:

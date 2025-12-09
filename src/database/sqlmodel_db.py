@@ -4,7 +4,11 @@ from typing import Generator
 
 from sqlmodel import SQLModel, create_engine, Session
 
-# 👉 Banco específico para os recursos que usarem SQLModel (ex: projetos/campanhas)
+from src.models.project import Project  # garante que a tabela exista
+from src.models.analysis import AnalysisHistory  # nosso novo modelo
+
+
+# 👉 Banco específico para os recursos que usarem SQLModel (ex: projetos/análises)
 DATABASE_URL = "sqlite:///./content_strategy_sqlmodel.db"
 
 # Para SQLite, geralmente é bom habilitar check_same_thread=False
@@ -26,8 +30,5 @@ def get_session() -> Generator[Session, None, None]:
 def init_db_sqlmodel() -> None:
     """
     Inicializa as tabelas do SQLModel.
-    No momento, se não houver modelos declarados, isso só garante que o
-    metadata está pronto. Quando criarmos os modelos (Project, Campaign, etc.),
-    eles serão criados aqui.
     """
     SQLModel.metadata.create_all(engine)

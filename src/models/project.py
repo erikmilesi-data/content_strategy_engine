@@ -1,10 +1,10 @@
 # src/models/project.py
 from __future__ import annotations
 
-from typing import Optional, List
+from typing import Optional
 from datetime import datetime
 
-from sqlmodel import SQLModel, Field, Relationship
+from sqlmodel import SQLModel, Field
 
 
 class Project(SQLModel, table=True):
@@ -20,7 +20,7 @@ class Project(SQLModel, table=True):
     name: str = Field(index=True, max_length=200)
     description: Optional[str] = Field(default=None, max_length=1000)
 
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    # novo: IG User ID associado a esse projeto (opcional)
+    ig_user_id: Optional[str] = Field(default=None, max_length=64)
 
-    # ligação com histórico de análises (vamos ajustar já já)
-    analyses: List["AnalysisHistory"] = Relationship(back_populates="project")
+    created_at: datetime = Field(default_factory=datetime.utcnow)

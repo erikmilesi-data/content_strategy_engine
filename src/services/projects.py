@@ -1,5 +1,5 @@
 # src/services/projects.py
-from typing import List
+from typing import List, Optional
 
 from sqlmodel import Session, select
 
@@ -12,6 +12,7 @@ def create_project(session: Session, owner_id: int, data: ProjectCreate) -> Proj
         owner_id=owner_id,
         name=data.name,
         description=data.description,
+        ig_user_id=data.ig_user_id,
     )
     session.add(project)
     session.commit()

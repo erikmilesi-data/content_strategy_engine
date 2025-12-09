@@ -1,9 +1,26 @@
-pandas
-numpy
-python-dotenv
-requests
-fastapi
-uvicorn
-pip install sqlmodel
-pip install "passlib[bcrypt]"
-httpx>=0.27
+# --- Backend ---
+fastapi==0.115.0
+uvicorn==0.30.1
+sqlmodel==0.0.22
+pydantic==2.9.1
+python-dotenv==1.0.1
+
+# --- Auth & Security ---
+passlib[bcrypt]==1.7.4
+python-jose==3.3.0
+
+# --- HTTP requests ---
+requests==2.32.3
+
+# --- Frontend ---
+streamlit==1.38.0
+altair==5.4.1
+
+# --- Data ---
+pandas==2.2.3
+
+# --- Logging ---
+loguru==0.7.2
+
+# --- Extra (uso comum em APIs e debug) ---
+typing_extensions==4.12.2

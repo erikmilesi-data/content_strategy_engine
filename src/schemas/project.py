@@ -8,6 +8,7 @@ from pydantic import BaseModel
 class ProjectBase(BaseModel):
     name: str
     description: Optional[str] = None
+    ig_user_id: Optional[str] = None
 
 
 class ProjectCreate(ProjectBase):
